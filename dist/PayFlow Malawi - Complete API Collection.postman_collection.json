@@ -1,0 +1,1188 @@
+{
+	"info": {
+		"_postman_id": "1b1f2499-8394-4ae4-b62c-2b1fc7138509",
+		"name": "PayFlow Malawi - Complete API Collection",
+		"description": "Complete API collection for PayFlow Malawi multi-tenant platform including Institutions, Employees, Deduction Requests, HR Management (Departments, Positions, Employee Documents)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7516906"
+	},
+	"item": [
+		{
+			"name": "1. Institutions",
+			"item": [
+				{
+					"name": "Get All Institutions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/institutions",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"institutions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Institution by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/institutions/{{institutionId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"institutions",
+								"{{institutionId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Institutions",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"institutionName\": \"Government\",\n  \"institutionCode\": \"\",\n  \"registrationNumber\": \"\",\n  \"institutionType\": \"EMPLOYER\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/institutions/search",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"institutions",
+								"search"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Institution - Employer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"institutionCode\": \"MOH\",\n  \"institutionName\": \"Ministry of Health\",\n  \"institutionType\": \"EMPLOYER\",\n  \"registrationNumber\": \"GOV-MOH-2024\",\n  \"taxNumber\": \"TAX-MOH-001\",\n  \"physicalAddress\": \"Capital Hill, Lilongwe 3\",\n  \"postalAddress\": \"P.O. Box 30377, Lilongwe 3\",\n  \"contactPhone\": \"+265-1-789-456\",\n  \"contactEmail\": \"info@health.gov.mw\",\n  \"website\": \"https://www.health.gov.mw\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/institutions",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"institutions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Institution - SACCO",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"institutionCode\": \"MSACCO\",\n  \"institutionName\": \"Malawi Savings and Credit Cooperative\",\n  \"institutionType\": \"SACCO\",\n  \"registrationNumber\": \"SACCO-MW-001\",\n  \"taxNumber\": \"TAX-SACCO-001\",\n  \"physicalAddress\": \"Area 47, Lilongwe\",\n  \"postalAddress\": \"P.O. Box 2567, Lilongwe\",\n  \"contactPhone\": \"+265-1-234-567\",\n  \"contactEmail\": \"info@msacco.mw\",\n  \"website\": \"https://www.msacco.mw\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/institutions",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"institutions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Institution",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"institutionName\": \"Ministry of Health and Population\",\n  \"physicalAddress\": \"Capital Hill, Lilongwe 3, Malawi\",\n  \"postalAddress\": \"P.O. Box 30377, Lilongwe 3, Malawi\",\n  \"contactPhone\": \"+265-1-789-456\",\n  \"contactEmail\": \"info@health.gov.mw\",\n  \"website\": \"https://www.health.gov.mw\",\n  \"institutionStatus\": \"ACTIVE\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/institutions/{{institutionId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"institutions",
+								"{{institutionId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Institution",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/institutions/{{institutionId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"institutions",
+								"{{institutionId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "2. Employees",
+			"item": [
+				{
+					"name": "Get All Employees",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/employees/institution/{{institutionId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"employees",
+								"institution",
+								"{{institutionId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Employee by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/employees/{{employeeId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"employees",
+								"{{employeeId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Employee by Number",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/employees/institution/{{institutionId}}/number/{{employeeNumber}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"employees",
+								"institution",
+								"{{institutionId}}",
+								"number",
+								"{{employeeNumber}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Employees by Department",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/employees/department/{{departmentId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"employees",
+								"department",
+								"{{departmentId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Employee",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"employeeNumber\": \"MOH-2024-001\",\n  \"nationalId\": \"123456789\",\n  \"firstName\": \"John\",\n  \"lastName\": \"Banda\",\n  \"middleName\": \"Paul\",\n  \"dateOfBirth\": \"1985-03-15\",\n  \"gender\": \"MALE\",\n  \"maritalStatus\": \"MARRIED\",\n  \"nationality\": \"Malawian\",\n  \"phoneNumber\": \"+265-999-123-456\",\n  \"email\": \"john.banda@health.gov.mw\",\n  \"physicalAddress\": \"Area 25, Lilongwe\",\n  \"postalAddress\": \"P.O. Box 123, Lilongwe\",\n  \"emergencyContactName\": \"Mary Banda\",\n  \"emergencyContactPhone\": \"+265-888-654-321\",\n  \"emergencyContactRelationship\": \"Spouse\",\n  \"departmentId\": \"{{departmentId}}\",\n  \"positionId\": \"{{positionId}}\",\n  \"employmentDate\": \"2024-01-15\",\n  \"contractStartDate\": \"2024-01-15\",\n  \"contractEndDate\": \"2026-01-14\",\n  \"employeeType\": \"PERMANENT\",\n  \"employmentStatus\": \"ACTIVE\",\n  \"basicSalary\": 850000,\n  \"bankName\": \"National Bank of Malawi\",\n  \"bankAccountNumber\": \"1234567890\",\n  \"bankBranch\": \"Lilongwe Branch\",\n  \"taxNumber\": \"TAX-JB-001\",\n  \"pensionNumber\": \"PEN-JB-001\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/employees?institutionId={{institutionId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"employees"
+							],
+							"query": [
+								{
+									"key": "institutionId",
+									"value": "{{institutionId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Employee",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"firstName\": \"John\",\n  \"lastName\": \"Banda\",\n  \"middleName\": \"Paul\",\n  \"phoneNumber\": \"+265-999-123-456\",\n  \"email\": \"john.banda@health.gov.mw\",\n  \"physicalAddress\": \"Area 25, Lilongwe, Malawi\",\n  \"postalAddress\": \"P.O. Box 123, Lilongwe\",\n  \"emergencyContactName\": \"Mary Banda\",\n  \"emergencyContactPhone\": \"+265-888-654-321\",\n  \"emergencyContactRelationship\": \"Spouse\",\n  \"departmentId\": \"{{departmentId}}\",\n  \"positionId\": \"{{positionId}}\",\n  \"employmentStatus\": \"ACTIVE\",\n  \"basicSalary\": 900000,\n  \"bankName\": \"National Bank of Malawi\",\n  \"bankAccountNumber\": \"1234567890\",\n  \"bankBranch\": \"Lilongwe Branch\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/employees/{{employeeId}}?institutionId={{institutionId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"employees",
+								"{{employeeId}}"
+							],
+							"query": [
+								{
+									"key": "institutionId",
+									"value": "{{institutionId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Employee",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/employees/{{employeeId}}?institutionId={{institutionId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"employees",
+								"{{employeeId}}"
+							],
+							"query": [
+								{
+									"key": "institutionId",
+									"value": "{{institutionId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "3. Departments",
+			"item": [
+				{
+					"name": "Get All Departments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/departments?institutionId={{institutionId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"departments"
+							],
+							"query": [
+								{
+									"key": "institutionId",
+									"value": "{{institutionId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Department by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/departments/{{departmentId}}?institutionId={{institutionId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"departments",
+								"{{departmentId}}"
+							],
+							"query": [
+								{
+									"key": "institutionId",
+									"value": "{{institutionId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Department Hierarchy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/departments/hierarchy?institutionId={{institutionId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"departments",
+								"hierarchy"
+							],
+							"query": [
+								{
+									"key": "institutionId",
+									"value": "{{institutionId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Department - HR",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"departmentCode\": \"HR\",\n  \"departmentName\": \"Human Resources\",\n  \"description\": \"Handles recruitment, employee relations, and HR policies\",\n  \"parentDepartmentId\": null,\n  \"location\": \"Main Building - 2nd Floor\",\n  \"costCenter\": \"CC-HR-001\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/departments?institutionId={{institutionId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"departments"
+							],
+							"query": [
+								{
+									"key": "institutionId",
+									"value": "{{institutionId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Department - Finance",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"departmentCode\": \"FIN\",\n  \"departmentName\": \"Finance\",\n  \"description\": \"Financial management, budgeting, and accounting\",\n  \"parentDepartmentId\": null,\n  \"location\": \"Main Building - 1st Floor\",\n  \"costCenter\": \"CC-FIN-001\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/departments?institutionId={{institutionId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"departments"
+							],
+							"query": [
+								{
+									"key": "institutionId",
+									"value": "{{institutionId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Sub-Department",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"departmentCode\": \"HR-REC\",\n  \"departmentName\": \"Recruitment\",\n  \"description\": \"Handles recruitment and selection processes\",\n  \"parentDepartmentId\": \"{{departmentId}}\",\n  \"location\": \"Main Building - 2nd Floor, Room 201\",\n  \"costCenter\": \"CC-HR-REC-001\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/departments?institutionId={{institutionId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"departments"
+							],
+							"query": [
+								{
+									"key": "institutionId",
+									"value": "{{institutionId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "4. Positions",
+			"item": [
+				{
+					"name": "Get All Positions",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/positions?institutionId={{institutionId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"positions"
+							],
+							"query": [
+								{
+									"key": "institutionId",
+									"value": "{{institutionId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Positions by Department",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/positions/department/{{departmentId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"positions",
+								"department",
+								"{{departmentId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Position - HR Manager",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"positionCode\": \"HR-MGR-001\",\n  \"positionTitle\": \"HR Manager\",\n  \"departmentId\": \"{{departmentId}}\",\n  \"jobDescription\": \"Oversee all HR operations, manage employee relations, and ensure compliance with labor laws\",\n  \"requirements\": \"Bachelor's degree in HR, 5+ years experience, SHRM certification preferred\",\n  \"salaryGrade\": \"M1\",\n  \"minSalary\": 800000,\n  \"maxSalary\": 1200000\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/positions?institutionId={{institutionId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"positions"
+							],
+							"query": [
+								{
+									"key": "institutionId",
+									"value": "{{institutionId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Position - HR Officer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"positionCode\": \"HR-OFF-001\",\n  \"positionTitle\": \"HR Officer\",\n  \"departmentId\": \"{{departmentId}}\",\n  \"jobDescription\": \"Support HR operations, handle employee inquiries, and assist with recruitment\",\n  \"requirements\": \"Bachelor's degree in HR or related field, 2+ years experience\",\n  \"salaryGrade\": \"O1\",\n  \"minSalary\": 450000,\n  \"maxSalary\": 650000\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/positions?institutionId={{institutionId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"positions"
+							],
+							"query": [
+								{
+									"key": "institutionId",
+									"value": "{{institutionId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "5. Employee Documents",
+			"item": [
+				{
+					"name": "Get Documents by Employee",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/employeedocuments/employee/{{employeeId}}?institutionId={{institutionId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"employeedocuments",
+								"employee",
+								"{{employeeId}}"
+							],
+							"query": [
+								{
+									"key": "institutionId",
+									"value": "{{institutionId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload Contract Document",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"employeeId\": \"{{employeeId}}\",\n  \"documentType\": \"CONTRACT\",\n  \"documentName\": \"Employment Contract - John Banda.pdf\",\n  \"filePath\": \"/documents/employees/contracts/john_banda_contract.pdf\",\n  \"fileSize\": 245760,\n  \"mimeType\": \"application/pdf\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/employeedocuments?institutionId={{institutionId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"employeedocuments"
+							],
+							"query": [
+								{
+									"key": "institutionId",
+									"value": "{{institutionId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Upload ID Copy",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"employeeId\": \"{{employeeId}}\",\n  \"documentType\": \"ID_COPY\",\n  \"documentName\": \"National ID Copy - John Banda.pdf\",\n  \"filePath\": \"/documents/employees/ids/john_banda_id.pdf\",\n  \"fileSize\": 156432,\n  \"mimeType\": \"application/pdf\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/employeedocuments?institutionId={{institutionId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"employeedocuments"
+							],
+							"query": [
+								{
+									"key": "institutionId",
+									"value": "{{institutionId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Download Document",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/employeedocuments/{{documentId}}/download?institutionId={{institutionId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"employeedocuments",
+								"{{documentId}}",
+								"download"
+							],
+							"query": [
+								{
+									"key": "institutionId",
+									"value": "{{institutionId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "6. Deduction Requests",
+			"item": [
+				{
+					"name": "Get All Deduction Requests",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/deductionrequests?institutionId={{institutionId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"deductionrequests"
+							],
+							"query": [
+								{
+									"key": "institutionId",
+									"value": "{{institutionId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Deduction Request by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/deductionrequests/{{deductionRequestId}}?institutionId={{institutionId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"deductionrequests",
+								"{{deductionRequestId}}"
+							],
+							"query": [
+								{
+									"key": "institutionId",
+									"value": "{{institutionId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Deductions by Employee",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/deductionrequests/employee/{{employeeId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"deductionrequests",
+								"employee",
+								"{{employeeId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Deduction Request - Share Contribution",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"employeeId\": \"{{employeeId}}\",\n  \"deductionType\": \"SHARE_CONTRIBUTION\",\n  \"amount\": 50000,\n  \"description\": \"Monthly share contribution to SACCO\",\n  \"startDate\": \"2024-02-01\",\n  \"endDate\": \"2024-12-31\",\n  \"frequency\": \"MONTHLY\",\n  \"priority\": 1,\n  \"isRecurring\": true\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/deductionrequests?institutionId={{institutionId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"deductionrequests"
+							],
+							"query": [
+								{
+									"key": "institutionId",
+									"value": "{{institutionId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Deduction Request - Loan Repayment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"employeeId\": \"{{employeeId}}\",\n  \"deductionType\": \"LOAN_REPAYMENT\",\n  \"amount\": 125000,\n  \"description\": \"Monthly loan repayment - Personal Loan #12345\",\n  \"startDate\": \"2024-02-01\",\n  \"endDate\": \"2026-01-31\",\n  \"frequency\": \"MONTHLY\",\n  \"priority\": 2,\n  \"isRecurring\": true,\n  \"externalReference\": \"LOAN-12345\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/deductionrequests?institutionId={{institutionId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"deductionrequests"
+							],
+							"query": [
+								{
+									"key": "institutionId",
+									"value": "{{institutionId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "7. Testing Workflows",
+			"item": [
+				{
+					"name": "1. Create Institution (Run First)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"institutionCode\": \"TEST-ORG\",\n  \"institutionName\": \"Test Organization\",\n  \"institutionType\": \"EMPLOYER\",\n  \"registrationNumber\": \"TEST-REG-001\",\n  \"taxNumber\": \"TAX-TEST-001\",\n  \"physicalAddress\": \"Test Address, Lilongwe\",\n  \"postalAddress\": \"P.O. Box 123, Lilongwe\",\n  \"contactPhone\": \"+265-1-111-111\",\n  \"contactEmail\": \"test@testorg.mw\",\n  \"website\": \"https://www.testorg.mw\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/institutions",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"institutions"
+							]
+						},
+						"description": "Create a test institution first, then copy the ID to institutionId variable"
+					},
+					"response": []
+				},
+				{
+					"name": "2. Create HR Department",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"departmentCode\": \"HR\",\n  \"departmentName\": \"Human Resources\",\n  \"description\": \"Human Resources Department\",\n  \"location\": \"Main Building\",\n  \"costCenter\": \"CC-HR\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/departments?institutionId={{institutionId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"departments"
+							],
+							"query": [
+								{
+									"key": "institutionId",
+									"value": "{{institutionId}}"
+								}
+							]
+						},
+						"description": "Create HR department, copy ID to departmentId variable"
+					},
+					"response": []
+				},
+				{
+					"name": "3. Create HR Manager Position",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"positionCode\": \"HR-MGR\",\n  \"positionTitle\": \"HR Manager\",\n  \"departmentId\": \"{{departmentId}}\",\n  \"jobDescription\": \"Manage HR operations\",\n  \"requirements\": \"Bachelor's degree, 5+ years experience\",\n  \"salaryGrade\": \"M1\",\n  \"minSalary\": 800000,\n  \"maxSalary\": 1200000\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/positions?institutionId={{institutionId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"positions"
+							],
+							"query": [
+								{
+									"key": "institutionId",
+									"value": "{{institutionId}}"
+								}
+							]
+						},
+						"description": "Create position, copy ID to positionId variable"
+					},
+					"response": []
+				},
+				{
+					"name": "4. Create Employee",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"employeeNumber\": \"EMP-001\",\n  \"nationalId\": \"123456789\",\n  \"firstName\": \"John\",\n  \"lastName\": \"Doe\",\n  \"dateOfBirth\": \"1985-01-01\",\n  \"gender\": \"MALE\",\n  \"maritalStatus\": \"SINGLE\",\n  \"nationality\": \"Malawian\",\n  \"phoneNumber\": \"+265-999-123-456\",\n  \"email\": \"john.doe@testorg.mw\",\n  \"departmentId\": \"{{departmentId}}\",\n  \"positionId\": \"{{positionId}}\",\n  \"employmentDate\": \"2024-01-01\",\n  \"employmentStatus\": \"ACTIVE\",\n  \"basicSalary\": 1000000\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/employees?institutionId={{institutionId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"employees"
+							],
+							"query": [
+								{
+									"key": "institutionId",
+									"value": "{{institutionId}}"
+								}
+							]
+						},
+						"description": "Create employee, copy ID to employeeId variable"
+					},
+					"response": []
+				},
+				{
+					"name": "5. Upload Employee Document",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"employeeId\": \"{{employeeId}}\",\n  \"documentType\": \"CONTRACT\",\n  \"documentName\": \"Employment Contract.pdf\",\n  \"filePath\": \"/documents/test_contract.pdf\",\n  \"fileSize\": 100000,\n  \"mimeType\": \"application/pdf\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/employeedocuments?institutionId={{institutionId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"employeedocuments"
+							],
+							"query": [
+								{
+									"key": "institutionId",
+									"value": "{{institutionId}}"
+								}
+							]
+						},
+						"description": "Upload document for employee"
+					},
+					"response": []
+				},
+				{
+					"name": "6. Create Deduction Request",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"employeeId\": \"{{employeeId}}\",\n  \"deductionType\": \"SHARE_CONTRIBUTION\",\n  \"amount\": 50000,\n  \"description\": \"Monthly SACCO contribution\",\n  \"startDate\": \"2024-02-01\",\n  \"frequency\": \"MONTHLY\",\n  \"isRecurring\": true\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/deductionrequests?institutionId={{institutionId}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"api",
+								"deductionrequests"
+							],
+							"query": [
+								{
+									"key": "institutionId",
+									"value": "{{institutionId}}"
+								}
+							]
+						},
+						"description": "Create deduction request for employee"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:5134",
+			"type": "string"
+		},
+		{
+			"key": "institutionId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "employeeId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "departmentId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "positionId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "documentId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "deductionRequestId",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "employeeNumber",
+			"value": "EMP-001",
+			"type": "string"
+		},
+		{
+			"key": "userId",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
